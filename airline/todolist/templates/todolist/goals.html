@@ -1,0 +1,16 @@
+{% extends "todolist/template.html" %}
+
+{% block body %}
+    <form action="{% url 'goals' %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Goal for Next 6 Months:</label>
+            <input type="email" class="form-control" name="userGoal" id="exampleFormControlInput1" placeholder="Your Goal for this Next Six Months">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Actions to be taken to achieve this Goal</label>
+            <textarea name="goaldetails" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+          <input type="submit" class="btn btn-primary">
+    </form>
+{% endblock %}

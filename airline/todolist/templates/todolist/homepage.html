@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        .section1{
+            background-image: url('https://images.pexels.com/photos/3243/pen-calendar-to-do-checklist.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background-size: cover;
+            background-position: center;
+            height: 110vh;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+        .content{
+            font-family: Arial, sans-serif;
+            text-align:center;
+            
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script>
+        $(window).scroll(function() {
+            var scrollPosition = $(window).scrollTop();
+            if (scrollPosition > 100) {
+                // Add animation effect here
+                // Animate the opacity of an element
+                $('section2').animate({
+                    opacity: 1
+                }, 500);
+            } else {
+                // Remove animation effect here
+                // Animate the opacity of an element
+                $('section2').animate({
+                    opacity: 0
+                }, 500);
+            }
+        });
+    </script>
+</head>
+<body>
+    <section class="section1">
+
+        <div class="content"> 
+            <h1>Welcome to TodoMaster</h1>
+            <h2>Your Personal Task Manager</h2>
+            <h2>Are you tired of juggling multiple tasks and reminders across different apps and platforms? Do you struggle to stay organized and focused on your goals? Look no further than TodoMaster, your ultimate to-do list companion.</h2>
+        </div>
+    </section>
+    <section class="section2" id="section2">
+        <div>
+            <h5>What is TodoMaster?</h5>
+            <p>
+                TodoMaster is a simple yet powerful task management tool designed to help you stay on top of your daily, weekly, and long-term tasks. With TodoMaster, you can:
+                <ul>                
+                    <li>Create and manage your to-do lists with ease</li>
+                    <li>Set reminders and due dates to stay on track</li>
+                    <li>Prioritize tasks with our intuitive categorization system</li>
+                    <li>Collaborate with friends and family to share tasks and responsibilities</li>
+                    <li>Track your progress and celebrate your achievements</li>
+                </ul>
+            </p>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends 'todolist/layout.html' %}
+{% block body %}
+    <h1>Add A New Task:</h1>
+    <form action="{% url 'add' %}" method="post">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">New Task</label>
+            <input type="email" name="newtask" class="form-control" id="exampleFormControlInput1" placeholder="New task">
+        </div>
+        <input type="submit" class="btn btn-primary">
+    </form>
+
+    {% if tasks %}
+        {% for task in tasks %}
+            <ul>
+                <li>{{task}}</li>
+            </ul>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

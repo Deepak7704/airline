@@ -21,4 +21,4 @@ jobs:
 
     - name: Run Django unit tests
       run: |
-        python airline/manage.py test
+        python airline/airline/manage.py test

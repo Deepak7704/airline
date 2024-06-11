@@ -1,22 +1,30 @@
-#!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
-import os
-import sys
+from django.db import models
+
+# Create your models here.
+class Aiport(models.Model):
+    code=models.CharField(max_length=3)
+    city=models.CharField(max_length=64)
+
+    def __str__(self):
+        return f"{self.city}({self.code})"
+    
+
+class Flights(models.Model):
+    origin=models.ForeignKey(Aiport,on_delete=models.CASCADE,related_name="departure")
+    destination=models.ForeignKey(Aiport,on_delete=models.CASCADE,related_name="arrivals")
+    duration=models.IntegerField()
 
 
-def main():
-    """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'airline.settings')
-    try:
-        from django.core.management import execute_from_command_line
-    except ImportError as exc:
-        raise ImportError(
-            "Couldn't import Django. Are you sure it's installed and "
-            "available on your PYTHONPATH environment variable? Did you "
-            "forget to activate a virtual environment?"
-        ) from exc
-    execute_from_command_line(sys.argv)
+    def __str__(self):
+        return f"{self.id}:{self.origin} to {self.destination}"
+    
+    def is_valid(self):
+        return self.origin != self.destination or self.duration>0
 
+class Passenger(models.Model):
+    firstname=models.CharField(max_length=64)
+    lastname=models.CharField(max_length=64)
+    flights=models.ManyToManyField(Flights,blank=True,related_name="passengers")
 
-if __name__ == '__main__':
-    main()
+    def __str__(self):
+        return f"{self.firstname} {self.lastname}"

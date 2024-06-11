@@ -19,7 +19,7 @@ class Flights(models.Model):
         return f"{self.id}:{self.origin} to {self.destination}"
     
     def is_valid(self):
-        return self.origin != self.destination or self.duration>0
+        return self.origin != self.destination and self.duration>0
 
 class Passenger(models.Model):
     firstname=models.CharField(max_length=64)
